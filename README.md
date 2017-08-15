@@ -32,3 +32,8 @@ VMIN | [Set] Min number of input bytes before `read()` returns |
 VTIME | [Set] Max time to wait before `read()` returns |
 
 Lastly, some error handling is implemented.
+
+This is interesting. I am beginning to see the terminal more as a C program than a "terminal."
+
+### Raw Input & Output
+
