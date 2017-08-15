@@ -44,3 +44,23 @@ Switching `Ctrl-Q` back on for quitting the program.
 Modular Keyboard Input
 - `editorReadKey()` : Reads and returns keypress
 - `editorProcessKeypress()` : Maps keypress to editor operations
+
+**Coding design decision**: Simple `main()`
+
+**Coding decision**: Use VT100 escape sequences because supported by many terminals. Other option: ncurses library which figures out terminal escape sequences.
+
+Screen Output
+- `write(STDIN_FILENO , "\x1b[2J", 4);` 
+   - `\x1b` = escape character
+   - `[` = specifies escape sequence after this
+- when error occurs, screen refreshes
+   - `atexit()` : can be used, but would erase error message
+- vim like `~` on the sides
+   - to retrieve terminal dimensions `editorConfig` is used
+
+Escape Sequences used / [Check this link](http://vt100.net/docs/vt100-ug/chapter3.html#ED)
+- `2J` = Erase In Display / clear screen option
+- `H` = Shift Cursor / default option to (1,1) (sidenote: terminal coordinates start from 1)
+
+
+
