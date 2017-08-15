@@ -3,13 +3,15 @@
 Coding this to understand how computer applications are developed.
 Following the guide here: http://viewsourcecode.org/snaptoken/kilo/
 
+Reading each chapter fully, sumarizing it, and then implementing it.
+
 Beyond simply following the steps, I will figure out which decisions were design-based, in an attempt to personalize the editor.
 
-## Setup
+### Chapter 1 - Setup
 
 Basic C language usage
 
-## Entering Raw Mode
+### Chapter 2 - Entering Raw Mode
 
 Terminal has a set of commands it takes from the keyboards for output-input features.
 
@@ -35,5 +37,6 @@ Lastly, some error handling is implemented.
 
 This is interesting. I am beginning to see the terminal more as a C program than a "terminal."
 
-### Raw Input & Output
+### Chapter 3 - Raw Input & Output
 
+Switching `Ctrl-Q` back on for quitting the program.
