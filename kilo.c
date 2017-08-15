@@ -1,6 +1,8 @@
 #include <unistd.h>
 #include <termios.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <stdio.h>
 
 struct termios orig_termios;
 
@@ -8,17 +10,13 @@ void disableRawMode() {
     tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig_termios);
 }
 
-/*
-** This function is disabling automatic ECHO. So you can't see what you type.
-** c_lflag = local flag which is dumping ground for other states
-** 
-*/
 void enableRawMode() {
     tcgetattr(STDIN_FILENO, &orig_termios);
     atexit(disableRawMode);
 
     struct termios raw = orig_termios;
-    raw.c_lflag &= ~(ECHO | ICANON); // ICANON makes input byte by byte
+    raw.c_iflag &= ~(IXON);
+    raw.c_lflag &= ~(ECHO | ICANON | ISIG);
 
     tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
 }
@@ -26,6 +24,11 @@ void enableRawMode() {
 int main() {
     enableRawMode();
     char c;
-    while ( read(STDIN_FILENO, &c, 1) == 1 && c != 'q' );
+    while ( read(STDIN_FILENO, &c, 1) == 1 && c != 'q' ) {
+        if( iscntrl(c) ) 
+            printf( "%d\n", c );
+        else 
+            printf( "%d('%c')\n", c, c );
+    }
     return 0;
 }
