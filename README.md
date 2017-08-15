@@ -40,3 +40,7 @@ This is interesting. I am beginning to see the terminal more as a C program than
 ### Chapter 3 - Raw Input & Output
 
 Switching `Ctrl-Q` back on for quitting the program.
+
+Modular Keyboard Input
+- `editorReadKey()` : Reads and returns keypress
+- `editorProcessKeypress()` : Maps keypress to editor operations
