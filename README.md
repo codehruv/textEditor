@@ -21,3 +21,14 @@ ECHO | Constant printing of typed in characters |
 ICANON | Line by line reading | 
 ISIG | Interrupt and end by force | Ctrl-C & Ctrl-V
 IXON | Software/data flow control | Ctrl-S & Ctrl-Q
+IEXTEN | Pausing input for character | Ctrl-V
+ICRNL | Carriage return convert to new line | Ctrl-M
+OPOST | Shifting cursor to start after new line |
+BRKINT | Break conditions stop program |
+INPCK | Parity checking (vestigial) |
+ISTRIP | 8th bit is stripped (vestigial) |
+CS8 | [Added] Set char size to 8 bits per byte | 
+VMIN | [Set] Min number of input bytes before `read()` returns |
+VTIME | [Set] Max time to wait before `read()` returns |
+
+Lastly, some error handling is implemented.
