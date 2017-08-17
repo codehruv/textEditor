@@ -55,10 +55,13 @@ Screen Output
 - `write(STDIN_FILENO , "\x1b[2J", 4);` 
    - `\x1b` = escape character
    - `[` = specifies escape sequence after this
+
 - when error occurs, screen refreshes
    - `atexit()` : can be used, but would erase error message
+
 - vim like `~` on the sides
    - to retrieve terminal dimensions `editorConfig` is used
+
 - retrieving terminal dimensions ( i.e. rows and columns )
 	- Easy Way - `ioctl()` 
 		- `TIOCGWINSZ` - Terminal IOCTL Get Window Size
@@ -67,6 +70,12 @@ Screen Output
 		- Send cursor to the bottom right corner of the screen
 		- Import cursor position
 
+- minimizing flicker effect
+    - minimizing use of `write()` using buffers
+        - `write()` doesn't have a regular callback, it can cause flickers
+        - better to take the entire screen output as one buffer and then write it together
+        - appending buffers used, one function uses `realloc()` to give more space to the appending buffer and uses `memcpy()` to pile on the string, and the other uses `free()` to free up the buffer
+    - disabling cursor while printing screen, enabling after it
 Escape Sequences used / [Check this link](http://vt100.net/docs/vt100-ug/chapter3.html#ED)
 Sequence | Effect
 --- | ---
@@ -74,8 +83,9 @@ Sequence | Effect
 `H` |  Shift Cursor / default option to (1,1) (sidenote: terminal coordinates start from 1)
 `C` | Cursor Forward
 `B` | Cursor Down
-`N` | Device Status Report / Option 6 returns cursor position
-
+`n` | Device Status Report / Option 6 returns cursor position
+`h` | Set Mode / Turn on features / Option `?25` turns on cursor
+`l` | Reset Mode / Turn off features / Option `?25` turns off cursor
 
 
 
