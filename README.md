@@ -10,6 +10,8 @@ Beyond simply following the steps, I will figure out which decisions were design
 ### Chapter 1 - Setup
 
 Basic C language usage
+C is a pain -.-
+You have to declare functions before using them.
 
 ### Chapter 2 - Entering Raw Mode
 
@@ -72,5 +74,28 @@ Sequence | Effect
 `H` |  Shift Cursor / default option to (1,1) (sidenote: terminal coordinates start from 1)
 `C` | Cursor Forward
 `B` | Cursor Down
+`N` | Device Status Report / Option 6 returns cursor position
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
