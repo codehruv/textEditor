@@ -58,14 +58,19 @@ Screen Output
 - vim like `~` on the sides
    - to retrieve terminal dimensions `editorConfig` is used
 - retrieving terminal dimensions ( i.e. rows and columns )
-	- Easy Way: `ioctl()` 
-
+	- Easy Way - `ioctl()` 
+		- `TIOCGWINSZ` - Terminal IOCTL Get Window Size
+		- Reason we can't stick only with this is because it doesn't work for all terminals
+	- Hard way 
+		- Send cursor to the bottom right corner of the screen
+		- Import cursor position
 
 Escape Sequences used / [Check this link](http://vt100.net/docs/vt100-ug/chapter3.html#ED)
 Sequence | Effect
 --- | ---
 `2J` | Erase In Display / clear screen option
 `H` |  Shift Cursor / default option to (1,1) (sidenote: terminal coordinates start from 1)
-
+`C` | Cursor Forward
+`B` | Cursor Down
 
 
