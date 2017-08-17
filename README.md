@@ -57,10 +57,15 @@ Screen Output
    - `atexit()` : can be used, but would erase error message
 - vim like `~` on the sides
    - to retrieve terminal dimensions `editorConfig` is used
+- retrieving terminal dimensions ( i.e. rows and columns )
+	- Easy Way: `ioctl()` 
+
 
 Escape Sequences used / [Check this link](http://vt100.net/docs/vt100-ug/chapter3.html#ED)
-- `2J` = Erase In Display / clear screen option
-- `H` = Shift Cursor / default option to (1,1) (sidenote: terminal coordinates start from 1)
+Sequence | Effect
+--- | ---
+`2J` | Erase In Display / clear screen option
+`H` |  Shift Cursor / default option to (1,1) (sidenote: terminal coordinates start from 1)
 
 
 

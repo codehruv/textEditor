@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <termios.h>
 #include <stdlib.h>
+#include <sys/ioctl.h>
 #include <ctype.h>
 #include <stdio.h>
 #include <errno.h>
@@ -14,8 +15,10 @@
 /*** data ***/
 
 struct editorConfig {
+	int screenrows;
+	int screencols;
     struct termios orig_termios;
-}
+};
 
 struct editorConfig E;
 /*** terminal ***/
@@ -48,6 +51,19 @@ void enableRawMode() {
     if( tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw) == -1 ) die("tcsetattr");
 }
 
+int getWindowSize(int *rows, int *cols) {
+	struct winsize ws;
+
+	if( ioctl( STDIN_FILENO, TIOCGWINSZ, &ws ) == -1 || ws.ws_col == 0 ) {
+		return -1;
+	}
+	else {
+		*cols = ws.ws_col;
+		*rows = ws.ws_row;
+		return 0;
+	}
+}
+
 char editorReadKey() {
     int nread;
     char c;
@@ -60,7 +76,7 @@ char editorReadKey() {
 /*** output ***/
 
 void editorDrawRows() {
-    for(int y = 0; y < 24; y++)
+    for(int y = 0; y < E.screenrows; y++)
         write(STDERR_FILENO, "~\r\n", 3);
 }
 
@@ -89,8 +105,13 @@ void editorProcessKeypress() {
 
 /*** init ***/
 
+void initEditor() {
+	if (getWindowSize(&E.screenrows, &E.screencols) == -1) die("getWindowSize");
+}
+
 int main() {
     enableRawMode();
+	initEditor();
 
     while (1) {
         editorRefreshScreen();
