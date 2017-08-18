@@ -51,7 +51,7 @@ Modular Keyboard Input
 
 **Coding decision**: Use VT100 escape sequences because supported by many terminals. Other option: ncurses library which figures out terminal escape sequences.
 
-Screen Output
+#### Screen Output Setup
 - `write(STDIN_FILENO , "\x1b[2J", 4);` 
    - `\x1b` = escape character
    - `[` = specifies escape sequence after this
@@ -76,19 +76,32 @@ Screen Output
         - better to take the entire screen output as one buffer and then write it together
         - appending buffers used, one function uses `realloc()` to give more space to the appending buffer and uses `memcpy()` to pile on the string, and the other uses `free()` to free up the buffer
     - disabling cursor while printing screen, enabling after it
+    - clearing and printing line by line, instead of clearing screen and printing all lines together
+
+- welcome message
+    - placed a third way in, center aligned
+    - `snprintf()` used to find length of welcome message
+    - they actually center align by placing spaces :P
+
 Escape Sequences used / [Check this link](http://vt100.net/docs/vt100-ug/chapter3.html#ED)
 Sequence | Effect
 --- | ---
-`2J` | Erase In Display / clear screen option
+`J` | Erase In Display / `2` clear screen option
 `H` |  Shift Cursor / default option to (1,1) (sidenote: terminal coordinates start from 1)
 `C` | Cursor Forward
 `B` | Cursor Down
 `n` | Device Status Report / Option 6 returns cursor position
 `h` | Set Mode / Turn on features / Option `?25` turns on cursor
 `l` | Reset Mode / Turn off features / Option `?25` turns off cursor
+`K` | Clear line
 
+Input keypresses created for kilo
+Keypress | Effect
+--- | ---
+wasd | Cursor Movement
+Arrow Keys | Mapped to wasd, hence, Cursor Movement
 
-
+Tomorrow, I will complete Step 3. 
 
 
 
