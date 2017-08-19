@@ -179,10 +179,10 @@ void editorMoveCursor(char key) {
             E.cx++;
             break;
         case 'w':
-            E.cy++;
+            E.cy--;
             break;
         case 's':
-            E.cy--;
+            E.cy++;
             break;
     }
 }
