@@ -100,8 +100,9 @@ Keypress | Effect
 --- | ---
 wasd | Cursor Movement
 Arrow Keys | Mapped to wasd, hence, Cursor Movement
-
-Tomorrow, I will complete Step 3. 
+Home, Del | Taking cursor to left/right
+Page Up, Page Down | Taking cursor to top/bottom
+ 
 
 
 
