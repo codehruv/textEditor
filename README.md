@@ -103,10 +103,15 @@ Arrow Keys | Mapped to wasd, hence, Cursor Movement
 Home, Del | Taking cursor to left/right
 Page Up, Page Down | Taking cursor to top/bottom
  
+The code is as much about error handling as it is about acutal coding.
 
+Some of the code is a bit too cluttered. I will have to unclutter it.
 
+### Chapter 4 - Text Editor
 
+Finally after stripping away the terminal's features, initializing the editor with our own features, we can shift to creating and editing files. :D
 
+The idea is to read files line by line using a newly defined data-type `erow` and other C file functionalities.
 
 
 
