@@ -196,6 +196,8 @@ void editorOpen(char *filename) {
 
 /*** append buffer ***/
 
+// Buffer used to print everything at once
+
 struct abuf {
     char *b;
     int len;    
@@ -203,6 +205,7 @@ struct abuf {
 
 #define ABUF_INIT {NULL, 0}
 
+// Function appends everything to the base abuf which is used to output later
 void abAppend(struct abuf *ab, const char *s, int len) {
     char *new = realloc(ab->b, ab->len + len);
 
@@ -212,6 +215,7 @@ void abAppend(struct abuf *ab, const char *s, int len) {
     ab->len += len;
 }
 
+// Release the memory
 void abFree(struct abuf *ab) {
     free(ab->b);
 }
@@ -221,6 +225,9 @@ void abFree(struct abuf *ab) {
 void editorDrawRows(struct abuf *ab) {
 	for(int y = 0; y < E.screenrows; y++) {
         if(y >= E.numrows) { 
+
+            // This bit of code prints the welcome screen if the file being read is empty
+            // welcome message is printed a third way in
             if(E.numrows == 0 && y == E.screenrows / 3) {
                 char welcome[80];
                 int welcomelen = snprintf(welcome, sizeof(welcome), 
@@ -237,6 +244,7 @@ void editorDrawRows(struct abuf *ab) {
             }
             else
                 abAppend(ab, "~", 1);
+        
         }
         else {
             int len = E.row.size;

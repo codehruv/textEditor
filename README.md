@@ -114,6 +114,12 @@ Finally after stripping away the terminal's features, initializing the editor wi
 The idea is to read files line by line using a newly defined data-type `erow` and other C file functionalities.
 
 
+### Project Notes
+
+While this was an easy challenge, it was just what I needed to ease into learning the vim key bindings, navigating tmux and using w3m. 
+
+This is also my first time writing a long program. Every time I leave it alone for a day or two, I have to read my code till I understand where I left off. Thankfully, I have the handy step-by-step guide with me. Taking on a project like this with no guidance is the goal, but I don't think I am at that level yet.
+
 
 
 
