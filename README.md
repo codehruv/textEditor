@@ -84,24 +84,26 @@ Modular Keyboard Input
     - they actually center align by placing spaces :P
 
 Escape Sequences used / [Check this link](http://vt100.net/docs/vt100-ug/chapter3.html#ED)
-Sequence | Effect
---- | ---
-`J` | Erase In Display / `2` clear screen option
-`H` |  Shift Cursor / default option to (1,1) (sidenote: terminal coordinates start from 1)
-`C` | Cursor Forward
-`B` | Cursor Down
-`n` | Device Status Report / Option 6 returns cursor position
-`h` | Set Mode / Turn on features / Option `?25` turns on cursor
-`l` | Reset Mode / Turn off features / Option `?25` turns off cursor
-`K` | Clear line
+
+Sequence | Effect 
+--- | --- |
+`J` | Erase In Display / `2` clear screen option |
+`H` |  Shift Cursor / default option to (1,1) (sidenote: terminal coordinates start from 1) |
+`C` | Cursor Forward |
+`B` | Cursor Down |
+`n` | Device Status Report / Option 6 returns cursor position |
+`h` | Set Mode / Turn on features / Option `?25` turns on cursor |
+`l` | Reset Mode / Turn off features / Option `?25` turns off cursor |
+`K` | Clear line |
 
 Input keypresses created for kilo
-Keypress | Effect
---- | ---
-wasd | Cursor Movement
-Arrow Keys | Mapped to wasd, hence, Cursor Movement
-Home, Del | Taking cursor to left/right
-Page Up, Page Down | Taking cursor to top/bottom
+
+Keypress | Effect 
+--- | --- |
+wasd | Cursor Movement |
+Arrow Keys | Mapped to wasd, hence, Cursor Movement |
+Home, Del | Taking cursor to left/right |
+Page Up, Page Down | Taking cursor to top/bottom |
  
 The code is as much about error handling as it is about acutal coding.
 
